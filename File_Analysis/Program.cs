@@ -2,6 +2,7 @@
 using System.Net;
 using System.IO;
 using System.Windows.Forms;
+using Ionic.Zip;
 
 namespace File_Analysis
 {
@@ -24,7 +25,7 @@ namespace File_Analysis
 
                 FtpWebResponse response = (FtpWebResponse)request.GetResponse();
                 Stream responseStream = response.GetResponseStream();
-                FileStream writer = new FileStream(@"c:\temp\" + filename, FileMode.Create);
+                FileStream writer = new FileStream(@"c:\Users\petep\Desktop\FA_Reports\" + filename, FileMode.Create);
 
                 long length = response.ContentLength;
                 int bufferSize = 2048;
@@ -41,8 +42,16 @@ namespace File_Analysis
                 responseStream.Close();
                 response.Close();
                 writer.Close();
-                MessageBox.Show(filename + " is stored at C:\\temp");
 
+                string zipToUnpack = "C:/Users/petep/Desktop/FA_Reports/" + filename;
+                string unpackDirectory = "C:/Users/petep/Desktop/FA_Reports/Extracted_Files/";
+                using (ZipFile zip = ZipFile.Read(zipToUnpack))
+                {
+                    foreach (ZipEntry e in zip)
+                    {
+                        e.Extract(unpackDirectory, ExtractExistingFileAction.OverwriteSilently);
+                    }
+                }
             }
             catch (Exception ex)
             {

@@ -150,6 +150,7 @@ namespace File_Analysis
 
                             Attachment attachment;
                             attachment = new Attachment("C:/Users/petep/Desktop/FA_Reports/Completed_Daily_Report.xlsx");
+                            attachment.Name = "File Analysis Report - " + DateTime.Today.ToString("MM/dd/yyyy") + ".xlsx";
                             message.Attachments.Add(attachment);
 
                             smtp.Send(message);
@@ -176,6 +177,7 @@ namespace File_Analysis
 
                             Attachment attachment;
                             attachment = new Attachment("C:/Users/petep/Desktop/FA_Reports/Completed_Daily_Report.xlsx");
+                            attachment.Name = "File Analysis Report - " + DateTime.Today.ToString("MM/dd/yyyy") + ".xlsx";
                             message.Attachments.Add(attachment);
 
                             smtp.Send(message);
@@ -203,6 +205,7 @@ namespace File_Analysis
 
                             Attachment attachment;
                             attachment = new Attachment("C:/Users/petep/Desktop/FA_Reports/Completed_Daily_Report.xlsx");
+                            attachment.Name = "File Analysis Report - " + DateTime.Today.ToString("MM/dd/yyyy") + ".xlsx";
                             message.Attachments.Add(attachment);
 
                             smtp.Send(message);
@@ -242,9 +245,9 @@ namespace File_Analysis
 
                         Console.WriteLine("Email sent successfully!");
                     }
-            });
+                });
 
-            Console.Read();
+                Console.Read();
             } 
         }
 
